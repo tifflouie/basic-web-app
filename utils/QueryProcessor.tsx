@@ -33,7 +33,7 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  if (query.toLowerCase().includes("subtraction")) {
+  if (query.toLowerCase().includes("minus")) {
     const match = query.match(/(\d+)\s*minus\s*(\d+)/i);
     if (match) {
       const num1 = parseInt(match[1], 10);
