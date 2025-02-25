@@ -33,4 +33,12 @@ describe("QueryProcessor", () => {
             "rohan3"
           ));
     })
+
+    test('should return 80', () => {
+        const query = "Which of the following numbers is the largest: 2, 80, 45?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "80"
+          ));
+    })
 });

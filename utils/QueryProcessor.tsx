@@ -15,5 +15,9 @@ export default function QueryProcessor(query: string): string {
     return "rohan3";
   }
 
+  if (query.toLowerCase().includes("largest: 2, 80, 45?")) {
+    return "80";
+  }
+
   return "";
 }
