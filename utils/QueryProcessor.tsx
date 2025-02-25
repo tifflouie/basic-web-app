@@ -71,5 +71,14 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("to the power of")) {
+    const match = query.match(/(\d+)\s*to the power of\s*(\d+)/i);
+    if (match) {
+      const base = parseInt(match[1], 10);
+      const exponent = parseInt(match[2], 10);
+      return Math.pow(base, exponent).toString();
+    }
+  }
+
   return "";
 }
