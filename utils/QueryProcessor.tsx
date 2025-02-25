@@ -24,5 +24,14 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("multiplied")) {
+    const match = query.match(/(\d+)\s*multiplied\s*(\d+)/i);
+    if (match) {
+      const num1 = parseInt(match[1], 10);
+      const num2 = parseInt(match[2], 10);
+      return (num1 * num2).toString();
+    }
+  }
+
   return "";
 }
