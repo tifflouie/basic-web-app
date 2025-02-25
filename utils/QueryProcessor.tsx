@@ -23,7 +23,7 @@ export default function QueryProcessor(query: string): string {
       return (num1 + num2).toString();
     }
   }
-  
+
   if (query.toLowerCase().includes("multiplied by")) {
     const match = query.match(/(\d+)\s*multiplied by\s*(\d+)/i);
     if (match) {
@@ -55,6 +55,19 @@ export default function QueryProcessor(query: string): string {
       };
       const primes = numbers.filter(isPrime);
       return `Prime numbers: ${primes.join(", ")}`;
+    }
+  }
+
+  if (query.toLowerCase().includes("square and a cube")) {
+    const match = query.match(/\d+/g);
+    if (match) {
+      const numbers = match.map(Number);
+      const isSquareAndCube = (num: number) => {
+        const root6 = Math.pow(num, 1 / 6);
+        return Number.isInteger(root6);
+      };
+      const results = numbers.filter(isSquareAndCube);
+      return `Numbers that are both squares and cubes: ${results.join(", ")}`;
     }
   }
 
