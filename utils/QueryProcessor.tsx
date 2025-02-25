@@ -15,8 +15,13 @@ export default function QueryProcessor(query: string): string {
     return "rohan3";
   }
 
-  if (query.toLowerCase().includes("largest: 2, 80, 45?")) {
-    return "80";
+  if (query.toLowerCase().includes("plus")) {
+    const match = query.match(/(\d+)\s*plus\s*(\d+)/i);
+    if (match) {
+      const num1 = parseInt(match[1], 10);
+      const num2 = parseInt(match[2], 10);
+      return (num1 + num2).toString();
+    }
   }
 
   return "";
