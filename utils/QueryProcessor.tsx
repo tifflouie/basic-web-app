@@ -16,11 +16,11 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("plus")) {
-    const match = query.match(/(\d+)\s*plus\s*(\d+)/i);
+    const match = query.match(/(\d+)(?:\s*plus\s*(\d+))+/gi);
     if (match) {
-      const num1 = parseInt(match[1], 10);
-      const num2 = parseInt(match[2], 10);
-      return (num1 + num2).toString();
+      const numbers = match[0].match(/\d+/g)?.map(Number) || [];
+      const sum = numbers.reduce((acc, num) => acc + num, 0);
+      return sum.toString();
     }
   }
 
